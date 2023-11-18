@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./shop.css";
-import "./app.scss";
 
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/shop/getproduct')
@@ -18,13 +18,23 @@ export default function Shop() {
             });
     }, []);
 
+    const addToCart = async (productId) => {
+      try {
+        await axios.post(`/cart/add/${productId}`);
+  
+        // Chuyển hướng đến trang giỏ hàng
+        navigate('/cart');
+      } catch (error) {
+        console.error('Failed to add to cart', error);
+      }
+    };
+
   return (
     <React.Fragment>
       <div className='shopp'>
-        <div>
+        <div>     
           <div className="product-shop">
-            <div className="product-list">
-              <p>Danh sách sản phẩm</p>
+          <div className="product-list">
             </div>
             <div className="product-box">
             {products.map((product) => (
@@ -37,7 +47,7 @@ export default function Shop() {
                     <p className="product-description">{product.description}</p>
                     <p className="product-price">{product.price}$</p>
                   </div>
-                  <button>Mua ngay</button>
+                  <button onClick={() => addToCart(product._id)}>Buy now</button>
                 </div>
               ))}
             </div>

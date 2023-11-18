@@ -7,35 +7,78 @@ import { loginUser } from '../../redux/apiRequest';
 import { registerUser } from "../../redux/apiRequest";
 import LoginScript from './loginscript';
 import "./loginpage.css";
-import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha'
 
 export default function Login() {
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
     //Login
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+      
+    const handleLogin = async (e) => {
         e.preventDefault();
-
+    
         const newUser = {
             username: username,
             password: password,
         };
-        loginUser(newUser, dispatch, navigate);
+    
+        try {
+            const response = await loginUser(newUser, dispatch, navigate);
+    
+            // Kiểm tra response từ API
+            if (response.error) {
+                setErrorMessage("Wrong Username or Password. Please check again.");
+    
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 3000);
+            }
+        } catch (error) {
+            setErrorMessage("Wrong Username or Password. Please check again.");
+    
+            setTimeout(() => {
+                setErrorMessage("");
+            }, 3000);
+        }
     };
+    
     //Register
     const [email, setEmail] = useState("");
-    const handleRegister =(e)=>{
+    const handleRegister = async (e) => {
         e.preventDefault();
+    
         const newUser = {
             email: email,
             password: password,
             username: username
         };
-        registerUser(newUser,dispatch,navigate);
+    
+        try {
+            const response = await registerUser(newUser, dispatch, navigate);
+    
+            if (response.error) {
+                setErrorMessage("Failed!!!");
+    
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 3000);           
+            }
+        } catch {
+            setSuccessMessage("Sign Up Success. Let's go back to Login");
+    
+            setTimeout(() => {
+                setSuccessMessage("");
+            }, 3000);
+        }
     };
+
+    
   return (
     <React.Fragment>
         <LoginScript />
@@ -50,14 +93,24 @@ export default function Login() {
                     </div>
                     <div className="input-box">
                     <span className="icon-login"><i className="fa-solid fa-lock" /></span>
-                    <input type="password" placeholder="Enter your password" onChange={(e) => {setPassword(e.target.value)}}/>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        onChange={(e) => { setPassword(e.target.value) }}
+                    />
                     <label>Password</label>
+                    <i
+                        
+                        className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{ cursor: 'pointer',position: 'fixed', right: '75px',top: '220px', width: '15px' }}
+                    />
                     </div>
                     <div className="remember-forgot">
                     <label><input type="checkbox" />Remember me</label>
                     <Link to="#">Forgot Password?</Link>
                     </div>                   
-                    <ReCAPTCHA sitekey="6Lck-A8pAAAAADrKjvjciFHkwFrCxigr7-C8ryuX" style={{marginBottom: '10px'}} />
+                    <ReCAPTCHA sitekey="6LfX3xMpAAAAAF-haTxXP99CCZabrNguyO-LDkZg" />
                     <button type="submit" className="btn-login">Login</button>
                     <div className="login-register">
                     <p>Don't have an account?<Link to="/login" className="register-link"> Register</Link></p>
@@ -79,13 +132,23 @@ export default function Login() {
                     </div>
                     <div className="input-box">
                     <span className="icon-login"><i className="fa-solid fa-lock" /></span>
-                    <input type="password" placeholder="Enter your password" onChange = {(e)=> {setPassword(e.target.value)}} />
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        onChange={(e) => { setPassword(e.target.value) }}
+                    />
                     <label>Password</label>
+                    <i
+                        
+                        className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{ cursor: 'pointer',position: 'fixed', right: '80px',top: '300px', width: '15px' }}
+                    />
                     </div>
                     <div className="remember-forgot">
                     <label><input type="checkbox" />I agree to the terms &amp; conditions</label>
                     </div>
-                    <button type="submit" className="btn-login"><Link to="/" style={{color: '#ffff'}}>Register</Link></button>
+                    <button type="submit" className="btn-login">Register</button>
                     <div className="login-register">
                     <p>Already have an account?<Link to="/login" className="login-link">Login</Link></p>
                     </div>
@@ -160,7 +223,17 @@ export default function Login() {
                         © 2023 Oceanic Society. The Oceanic Society is a registered organization. Our Federal Tax ID is 94-3105570.
                     </div>
                 </div>
-            </div>           
+            </div>    
+            {errorMessage && (
+                <div className="error-message">
+                    {errorMessage}
+                </div>
+            )}
+            {successMessage && (
+            <div className="success-message">
+                {successMessage}
+            </div>
+            )}
     </React.Fragment>
   )
 }

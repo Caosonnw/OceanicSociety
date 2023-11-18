@@ -1,0 +1,38 @@
+.table-contact{
+    background-image: url("./07.png");
+    background-position: right;
+    text-align: center;
+    margin-top: 40px;
+    width: 100%;
+    overflow-x: auto;
+}
+.table-contact table{
+    /* margin: 0 35%; */
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.table-contact th,
+.table-contact td {
+  padding: 10px;
+  text-align: left;
+  border: 3px solid #ddd; /* Điều này tạo ra đường viền cho cột và hàng */
+}
+.table-contact th {
+  background-color: rgba(0, 162, 255, 0.621); /* Màu nền cho tiêu đề cột */
+}
+
+
+table button{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+table button:hover{
+    background-color: black;
+    color: white;
+}

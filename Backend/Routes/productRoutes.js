@@ -10,8 +10,11 @@ router.get('/create', productController.create);
 router.post('/store',upload.single('image'), productController.store);
 //Chỉnh sửa sản phẩm
 router.get('/:id/edit', productController.edit);
+//Update sản phẩm
 router.put('/:id', productController.update);
 //Xóa sản phẩm
 router.delete('/:id', productController.destroy);
+// Lấy sản phẩm bằng id 
+router.get('/:id', productController.getProductById);
 
 module.exports = router;

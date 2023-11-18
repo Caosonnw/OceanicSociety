@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import "./create.css";
 
 export default function Create() {
   const [formData, setFormData] = useState({
@@ -45,41 +46,41 @@ export default function Create() {
   };
   return (
     <React.Fragment>
+      <h2>Post new Product</h2>
       <div className="mt-4">
-        <h3>Đăng sản phẩm </h3>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div className="form-group">
-            <label htmlFor="name">Tên sản phẩm </label>
+          <div className="form-group-p">
+            <label htmlFor="name"><b>Product name</b> </label>
             <input 
             type="text" 
-            className="form-control" 
+            className="form-control-p" 
             onChange={handleInputChange}
             id="exampleInputEmail1" name="name" />
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Mô tả</label>
+          <div className="form-group-p">
+            <label htmlFor="description"><b>Description</b></label>
             <input 
             type="text" 
-            className="form-control"           
+            className="form-control-p"           
             id="exampleInputEmail1" name="description" />
           </div>
-          <div className="form-group">
-            <label htmlFor="price">Giá </label>
+          <div className="form-group-p">
+            <label htmlFor="price"><b>Price </b></label>
             <input 
             type="number" 
-            className="form-control" 
+            className="form-control-p" 
             onChange={handleInputChange}
             id="exampleInputEmail1" name="price" />
           </div>
-          <div className="form-group">
-            <label htmlFor="image">Hình ảnh</label>
+          <div className="form-group-p">
+            <label htmlFor="image"><b>Image</b></label>
             <input 
             type="file" 
-            className="form-control-file" 
+            className="form-control-file-p" 
             onChange={handleImageChange}
             name="image" />
           </div>
-          <button type="submit" className="btn btn-primary">SAVE</button>
+          <button type="submit" className="btn-p btn-primary-p">SAVE</button>
         </form>
       </div>
 

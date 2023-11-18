@@ -1,0 +1,40 @@
+
+.mt-4 {
+  margin-top: 20px;
+}
+
+.form-group-p {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-p label {
+  width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.form-control-p {
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-control-file-p {
+  width: 50%;
+  margin-top: 5px;
+}
+
+.btn-p {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.btn-primary-p {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary-p:hover {
+  background-color: #0056b3;
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import "./edit.css";
 
 export default function Edit() {
     const [product, setProduct] = useState({
@@ -13,8 +14,8 @@ export default function Edit() {
     
       const { id } = useParams();
 
-    useEffect(() => {
-        axios.get(`/products/${id}`)
+      useEffect(() => {
+        axios.get(`/product/${id}`)
         .then(response => {
             setProduct(response.data);
         })
@@ -34,7 +35,7 @@ export default function Edit() {
         e.preventDefault();
 
         try {
-        await axios.put(`/products/${id}`, product);
+        await axios.put(`/product/${id}`, product);
         
         } catch (error) {
         console.error('Error updating product:', error);
@@ -42,32 +43,32 @@ export default function Edit() {
     };
   return (
     <React.Fragment>
-        <div className="mt-4">
-            <h3>Cập nhật sản phẩm</h3>
-            <form className="mt-4" onSubmit={handleSubmit}>
+        <div className="mt-4-e">
+            <h2>Update Product</h2>
+            <form className="mt-4-e" onSubmit={handleSubmit}>
                 <div className="form-group">
-                <label htmlFor="name">Tên sản phẩm </label>
+                <label htmlFor="name"><b>Product name</b> </label>
                 <input 
                 type="text" 
-                className="form-control" 
+                className="form-control-e" 
                 value={product.name} 
                 onChange={handleInputChange}
                 id="name" name="name" />
                 </div>
-                <div className="form-group">
-                <label htmlFor="price">Giá</label>
+                <div className="form-group-e">
+                <label htmlFor="price">Price</label>
                 <input 
                 type="number" 
-                className="form-control" 
+                className="form-control-e" 
                 value={product.price}
                 onChange={handleInputChange}
                 id="price" name="price" />
                 </div>
-                <div className="form-group">
-                <label htmlFor="image">Hình ảnh</label>
-                <input type="file" className="form-control-file" name="image" />
+                <div className="form-group-e">
+                <label htmlFor="image">Image</label>
+                <input type="file" className="form-control-file-e" name="image" />
                 </div>
-                <button type="submit" className="btn btn-primary">UPDATE</button>
+                <button type="submit" className="btn btn-primary-e">UPDATE</button>
             </form>
         </div>
 

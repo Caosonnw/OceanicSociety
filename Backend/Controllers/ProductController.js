@@ -31,10 +31,19 @@ class ProductController {
 
     async update(req, res, next) {
         try {
-            await Product.updateOne({ _id: req.params.id }, req.body);
+            const { id } = req.params;
+            const updatedProduct = await Product.findByIdAndUpdate(id, req.body, { new: true });
             res.redirect('StoredProduct/stored');
         } catch (error) {
             next(error);
+        }
+    }
+    async getProductById(req, res, next) {
+        try {
+            const product = await Product.findById(req.params.id);
+            res.json(product);
+        } catch (error) {
+            res.status(500).json({ error: 'Lỗi khi lấy thông tin sản phẩm' });
         }
     }
 
@@ -46,8 +55,6 @@ class ProductController {
             next(error);
         }
     }
-
-    
 }
 
 module.exports = new ProductController();

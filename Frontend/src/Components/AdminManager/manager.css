@@ -1,0 +1,19 @@
+
+.manager button{
+    border: none;
+    padding: 10px;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.manager button:hover{
+    background-color: black;
+    color: white;
+}
+
+.manager button h1 {
+    position: fixed;
+    top: 200px;
+}

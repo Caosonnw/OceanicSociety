@@ -5,21 +5,29 @@ import Login from "./Components/LoginPage/login";
 import GetAllUsers from "./Components/GetAllUsers/GetAllUsers";
 import Navbar from "./Components/NavBar/Navbar";
 import Create from "./Components/CreateProduct/create";
-import Edit from "./Components/EditProduct/edit";
-// import Stored from "./Components/StoreProduct/stored";
 import Shop from "./Components/Shop/shop";
+import AdminManager from "./Components/AdminManager/AdminManager";
+import Stored from "./Components/StoreProduct/stored";
+import Edit from "./Components/EditProduct/edit";
+import Cart from "./Components/Cart/cart";
+import About from "./Components/About/about";
+
 
 function App() {
   return (
     <Router>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/edit" element={<Edit />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/stored" element={<Stored />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id/edit" element={<Edit />} />
           <Route path="/getallusers" element={<GetAllUsers />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/manager" element={<AdminManager />} />
         </Routes>
     </Router>
   );

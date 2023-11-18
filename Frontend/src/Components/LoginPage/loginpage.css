@@ -17,6 +17,37 @@ body{
   background-image: url('./img-login-form.png');
 }
 
+.error-message {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.error-message button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+.success-message{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: green;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.success-message button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
 
 /*from login*/
 .wrapper{

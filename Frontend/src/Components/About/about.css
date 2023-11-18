@@ -1,0 +1,228 @@
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #222222;
+}
+#image{
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+}
+#title{
+    position: absolute;
+    top: 330px;
+    left: 23%;
+    font-family: "EB Garamond",serif;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: none;
+    font-size: 56px;
+    text-shadow: 0px 4px 20px rgba(0,10,30,.9);
+    color:aliceblue;
+}
+#screen{
+    width: 60%;
+    height: 57%;
+    background-color: #222222;
+    float: left;
+    line-height: 1.45;
+}
+.noidung1{
+    padding: 25% 10% 2% 17%;
+    font-size: 42px;
+    text-align: left;
+    color:aliceblue;
+}
+.noidung2{
+    padding-left: 17%;
+    padding-right: 20%;
+    font-family: "Jost",sans-serif;
+    font-size: 1.2em;
+    text-align: left;
+    color:aliceblue;
+}
+.noidung3{
+    padding:4% 30%;
+    font-family: "Jost",sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    color:aliceblue;
+}
+.container {
+    display: flex; 
+    justify-content: center; 
+}
+.square {
+    width: 300px;
+    height: 265px;
+    margin: 0 5px; 
+    text-align: center;
+    background-color: #111112;
+    justify-content: flex-start;
+    box-shadow: 0px 8px 24px rgba(0,10,30,.1);
+    -webkit-border-radius: 20px;  
+}
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: 40px 20px 0px;
+}
+.content{
+    color:aliceblue;
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Jost",sans-serif;
+    padding: 20px 19px 0px
+}
+#image2{
+    width: 50%;
+    height: 64%;
+    float: left;
+    line-height: 1.45;
+}
+.noidung4{
+    padding:15% 17% 0px;
+    font-family: "EB Garamond",serif;
+    font-size: 56px;
+    text-align: left;
+    line-height: 1.6;
+    font-style: normal;
+    color:aliceblue;
+}
+.noidung5{
+    padding:2% 17% 45px;
+    font-family: "Jost",sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    font-style: normal;
+    text-align: left;
+    color:aliceblue;
+}
+.fl-button{
+    padding: 17px 35px;
+    margin: 120px;
+    background-color: #896304d5;
+    text-decoration: none;
+    -webkit-transition: background .5s;
+    transition: background .5s;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px; 
+}
+.fl-button:hover{
+    background-color: #293ded;
+
+}
+.fl-button-text{
+    font-size: 17px;
+    color: #d6dde5;
+    font-weight: 500;
+    font-family: "Jost",sans-serif;
+    border: 0;
+
+}
+#image3{
+    width: 100%;
+    height: 1000px;
+}
+.line1{
+    position: relative;
+    top: 50px;
+    left: 175px;
+    width: 55px;
+    height: 2.8px;
+    background-color: black;
+}
+.container-image{
+    width: 100%; 
+    height: 1000px; 
+    background-color: #222222; 
+    clear: both; 
+    background-image: url("./07.png");
+     background-size: cover;
+}
+.noidung6{
+    position: relative;
+    top: 74px;
+    left: 172px;
+    font-size: 32px;
+    line-height: 1.4;
+    font-weight: 700;
+    font-family: "EB Garamond",serif;
+    color:black;
+}
+.line2{
+    position: relative;
+    top: 150px; /*chỉnh độ cao thấp của đoạn thẳng */
+    left: 175px;
+    width: 55px;
+    height: 2.5px;
+    background-color: black;
+}
+.container-image2{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.image3{
+    width: 100%;
+    height: 530px;
+}
+.image-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 530px;
+    background: linear-gradient(90deg, rgba(0, 68, 132, 0.69) 40%, rgba(255, 255, 255, 0) 80%);
+}
+.noidung7{
+    position: absolute;
+    top: 59px;
+    left: 175px;
+    font-size: 42px;
+    line-height: 1.4;
+    font-weight: 700;
+    font-family: "EB Garamond",serif;
+    color:aliceblue;
+}
+.noidung8{
+    position: absolute;
+    top: 142px;
+    left: 175px;
+    padding: 0px 155px 0px 0px;
+    line-height: 1.6;
+    font-size: 24px;
+    font-family: "Jost",sans-serif;
+    color: aliceblue;
+}
+.fl-button2{
+    position: absolute;
+    padding: 17px 35px;
+    top: 410px;
+    left: 175px;
+    background-color: #896304d5;
+    text-decoration: none;
+    -webkit-transition: background .5s;
+    transition: background .5s;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px; 
+}
+.fl-button2:hover{
+    background-color: #293ded;
+
+}
+.fl-button-text2{
+    font-size: 17px;
+    color: #d6dde5;
+    font-weight: 500;
+    font-family: "Jost",sans-serif;
+    border: 0;
+}

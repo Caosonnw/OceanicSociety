@@ -29,7 +29,7 @@ export default function Navbar() {
                     <nav>
                         <ul>
                             <li>
-                                <Link to="#">ABOUT</Link>
+                                <Link to="/about">ABOUT</Link>
                             </li>
                             <li>
                                 <Link to="#">CONTACT</Link>
@@ -76,11 +76,12 @@ export default function Navbar() {
                                     Hi, <span> {user.username}</span></p>
                                     <div className="dropdown" style={{ position: 'absolute', top: '121px', left: '100' ,backgroundColor: 'white', borderRadius: '10px', width: '10%'}}>
                                         <Link to="#" style={{marginTop: '10px'}} >Profile</Link>
+                                        <Link to="/cart">Cart</Link>
                                         {user.admin === true &&
                                         <>
-                                        <Link to="/getallusers">Get User</Link>
+                                        <Link to="/manager">Manager</Link>
+                                        <Link to="/stored">Stored</Link>
                                         <Link to="/create">Post new products</Link>
-                                        <Link to="/edit">Edit Product</Link>
                                         </>
                                         }
                                         <Link to="/login" className="navbar-logout" style={{marginBottom: 10}} onClick={handleLogOut}>

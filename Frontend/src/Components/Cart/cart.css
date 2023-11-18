@@ -1,0 +1,115 @@
+
+.product-total {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.header-cart {
+    margin-top: 50px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
+.sub-cart {
+  color: #007bff;
+}
+.heading-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.my-cart {
+  font-size: 24px;
+}
+
+.continue {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f8f9fa;
+}
+
+.update-quantity {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  width: 50px;
+  padding: 5px;
+}
+
+.cart-image {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+}
+
+
+.remove button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+.totals {
+  margin-top: 20px;
+}
+
+.totals-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.totals-label {
+  font-weight: bold;
+}
+
+.totals-value {
+  font-weight: bold;
+}
+
+
+.checkout-form {
+  text-align: center;
+}
+
+.checkout {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.checkout:hover{
+    background-color: #00761c;
+}

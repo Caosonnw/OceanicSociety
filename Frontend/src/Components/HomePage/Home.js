@@ -1,9 +1,53 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Homestyle.css";
-
+import { useState, useEffect } from 'react';
+import axios from "axios";
 
 export default function Home() {
+    const [email, setEmail] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+    const [error, setError] = useState(null);
+    const [notification, setNotification] = useState(null);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+      };
+    
+      const closeAlert = () => {
+        setShowAlert(false);
+        setError(null);
+        setNotification(null);
+      };
+    
+      useEffect(() => {
+        if (showAlert) {
+          const timeoutId = setTimeout(() => {
+            closeAlert();
+          }, 3000);
+    
+          return () => {
+            clearTimeout(timeoutId);
+          };
+        }
+      }, [showAlert]);
+
+
+      const handleContactSubmit = async () => {
+        try {
+            if (!email.trim()) {
+              setNotification('Vui lòng nhập địa chỉ email.');
+            } else {
+              await axios.post('/contact/sendcontact', { email });
+              setNotification('Liên hệ đã được gửi thành công!');
+              setShowAlert(true);
+            }
+        } catch (error) {
+          setError('Email đã gửi liên hệ trước đó.');
+          setShowAlert(true);
+        }
+      };
+
   return (
     <React.Fragment>
         <div className='homepage'>
@@ -64,8 +108,16 @@ export default function Home() {
                     <div className='content-cnt'>
                         <h2>Join our community.</h2>
                         <p>Email address</p><p style={{color: 'red'}}>*</p>
-                        <input type="email" placeholder="    Join our online community...."/>
-                        <Link to="#"><button>Sign up</button></Link>
+                        <input type="email" placeholder="    Join our online community...." value={email} onChange={handleEmailChange}/>
+                        <Link to="#">
+                            <button onClick={handleContactSubmit}>Sign up</button>
+                        </Link>
+                        {/* Hiển thị thông báo nếu showAlert là true */}
+                        {showAlert && (
+                        <div className={`custom-alert ${error ? 'error' : ''}`}>
+                        <p>{error || notification}</p>
+                        </div>
+                        )}
                     </div>
                 </div>
             </div>

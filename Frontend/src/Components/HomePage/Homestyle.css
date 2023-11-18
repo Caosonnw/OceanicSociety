@@ -296,7 +296,7 @@ ul li:hover ul.dropdown{
 
 /* content-cnt */
 .content-wrapper {
-  background-color: #ffffff;
+  background-color: #ffffff00;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 50px 50px;
   margin: 0 auto;
@@ -354,6 +354,27 @@ ul li:hover ul.dropdown{
   color: #e7e7e7;
   cursor: pointer;
   transition: all 0.5s;
+}
+
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.custom-alert.error {
+  background-color: rgb(255, 71, 71);
+}
+
+.custom-alert.closed {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /*footer*/

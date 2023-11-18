@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     btnDeleteProduct.onclick = function () {
       // Logic xử lý khi nút xóa được nhấn
-      deleteForm.action = `/api/products/${productIdToDelete}?_method=DELETE`; // Điều chỉnh địa chỉ API nếu cần thiết
+      deleteForm.action = `/products/${productIdToDelete}?_method=DELETE`;
       deleteForm.submit();
     };
   });
