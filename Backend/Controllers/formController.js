@@ -3,8 +3,6 @@ const FormInformation = require('../models/informationForm');
 const createForm = async (req, res) => {
   try {
     const { lastName, firstName, emailAddress, address } = req.body;
-
-    console.log('Received Form Data:', lastName, firstName, emailAddress, address);
     
     const newForm = new FormInformation({
       lastName,

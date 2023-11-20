@@ -103,7 +103,7 @@ export default function Login() {
                         
                         className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
                         onClick={() => setShowPassword(!showPassword)}
-                        style={{ cursor: 'pointer',position: 'fixed', right: '75px',top: '220px', width: '15px' }}
+                        style={{ cursor: 'pointer',position: 'fixed', right: '75px',top: '280px', width: '15px' }}
                     />
                     </div>
                     <div className="remember-forgot">
@@ -142,7 +142,7 @@ export default function Login() {
                         
                         className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
                         onClick={() => setShowPassword(!showPassword)}
-                        style={{ cursor: 'pointer',position: 'fixed', right: '80px',top: '300px', width: '15px' }}
+                        style={{ cursor: 'pointer',position: 'fixed', right: '80px',top: '360px', width: '15px' }}
                     />
                     </div>
                     <div className="remember-forgot">

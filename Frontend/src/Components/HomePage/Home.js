@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div className="content">
                 <h1>Latest News</h1>
-                <Link to="#">Read More News</Link>
+                <Link to="/news">Read More News</Link>
             </div>
             <div>
                 <div className="mid-1">

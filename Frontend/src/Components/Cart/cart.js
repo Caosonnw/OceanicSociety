@@ -80,16 +80,9 @@ export default function Cart () {
 
   const handleFormSubmitForm = async (e) => {
     e.preventDefault();
-    console.log('Form Values:', formValues);
-  
-    const formData = new FormData();
-    formData.append('lastName', formValues.lastName);
-    formData.append('firstName', formValues.firstName);
-    formData.append('emailAddress', formValues.emailAddress);
-    formData.append('address', formValues.address);
   
     try {
-      await axios.post('/form/create', formData);
+      await axios.post('/form/create', formValues);
       setFormValues({
         lastName: '',
         firstName: '',
