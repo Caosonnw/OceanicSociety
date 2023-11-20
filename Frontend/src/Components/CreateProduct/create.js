@@ -62,7 +62,9 @@ export default function Create() {
             <input 
             type="text" 
             className="form-control-p"           
-            id="exampleInputEmail1" name="description" />
+            id="exampleInputEmail1" name="description" 
+            onChange={handleInputChange}
+            value={formData.description}/>
           </div>
           <div className="form-group-p">
             <label htmlFor="price"><b>Price </b></label>

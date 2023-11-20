@@ -12,6 +12,7 @@ const siteRoute = require("./Routes/siteRoutes");
 const contactRoute = require("./Routes/contactRoutes");
 const meRoute = require("./Routes/meRoutes");
 const cartRoute = require("./Routes/cartRoutes");
+const formRoute = require("./Routes/formRoutes");
 
 require('dotenv').config();
 
@@ -41,6 +42,7 @@ app.use("/shop", siteRoute);
 app.use("/contact", contactRoute); //Gửi contact
 app.use("/stored", meRoute);
 app.use("/cart", cartRoute);
+app.use('/form', formRoute);
 
 //Use multer
 app.use(bodyParser.json());

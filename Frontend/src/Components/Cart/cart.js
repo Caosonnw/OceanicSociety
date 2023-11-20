@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./cart.css";
+import axios from 'axios';
 
 export default function Cart () {
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const [formValues, setFormValues] = useState({
+    lastName: '',
+    firstName: '',
+    emailAddress: '',
+    address: '',
+  });
 
   const [cartItems, setCartItems] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
@@ -11,11 +21,29 @@ export default function Cart () {
   const [total, setTotal] = useState(0);
   const [quantityValues, setQuantityValues] = useState({});
 
-  const handleQuantityChange = (itemId, value) => {
+  const handleQuantityChange = async (itemId, value) => {
     setQuantityValues({
       ...quantityValues,
       [itemId]: value,
     });
+  
+    try {
+      const response = await axios.post(`/cart/update/${itemId}`, { quantity: value });
+      if (response.status === 200) {
+        setAlertMessage("Update successful");
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+      } else {
+        setAlertMessage("Update failed");
+        setShowAlert(true);
+      }
+    } catch (error) {
+      console.error("Update error:", error);
+      setAlertMessage("Update failed");
+      setShowAlert(true);
+    }
   };
 
   const handleFormSubmit = (formId) => {
@@ -39,13 +67,48 @@ export default function Cart () {
         console.error(error.message);
       }
     };
-  
+
     fetchCartItems();
   }, []);
 
+  const handleFormChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFormSubmitForm = async (e) => {
+    e.preventDefault();
+    console.log('Form Values:', formValues);
+  
+    const formData = new FormData();
+    formData.append('lastName', formValues.lastName);
+    formData.append('firstName', formValues.firstName);
+    formData.append('emailAddress', formValues.emailAddress);
+    formData.append('address', formValues.address);
+  
+    try {
+      await axios.post('/form/create', formData);
+      setFormValues({
+        lastName: '',
+        firstName: '',
+        emailAddress: '',
+        address: '',
+      });
+      setAlertMessage('Form submitted successfully!');
+      setShowAlert(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setAlertMessage('Failed to submit form. Please try again.');
+      setShowAlert(true);
+    }
+  };
+  
+
   return (
     <React.Fragment>
-      <div>
+      <div className='cartt'>
         <div className="header-cart">
           <h1 className="sub-cart">
             <span>Shopping Cart</span>
@@ -78,8 +141,8 @@ export default function Cart () {
                       <form
                         className="update-quantity"
                         id={`updateForm${item._id}`}
-                        action={`/cart/update/${item._id}`}
-                        method="POST"
+                        // action={`/cart/update/${item._id}`}
+                        // method="POST"
                       >
                         <label htmlFor={`quantity${item._id}`}>Quantity:</label>
                         <input
@@ -116,8 +179,8 @@ export default function Cart () {
             </table>
           ) : (
             <>
-              <p>Your shopping cart is empty.</p>
-              <a href="/">Return</a>
+              <p className='cart-p'>Your shopping cart is empty.</p>
+              <a className='cart-a' href="/"><button>Return</button></a>
             </>
           )}
           <div className="totals">
@@ -146,12 +209,74 @@ export default function Cart () {
               </div>
             </div>
           </div>
-          <form className="checkout-form" action="/cart/checkout" method="GET">
+        </div>
+
+        <div className="wrapper-c">
+          <form className="checkout-form" onSubmit={(e) => handleFormSubmitForm(e)}>
+            <h2>Information form</h2>
+            <div>
+              <h4>Account</h4>
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    required
+                    className="name"
+                    name="lastName"
+                    value={formValues.lastName}
+                    onChange={handleFormChange}
+                  />
+                  <i className="fa fa-user icon" />
+                </div>
+                <div className="input_box">
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    required
+                    className="name"
+                    name="firstName"
+                    value={formValues.firstName}
+                    onChange={handleFormChange}
+                  />
+                  <i className="fa fa-user icon" />
+                </div>
+              </div>
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                    className="name"
+                    name="emailAddress"
+                    value={formValues.emailAddress}
+                    onChange={handleFormChange}
+                  />
+                  <i className="fa fa-envelope icon" />
+                </div>
+              </div>
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    required
+                    className="name"
+                    name="address"
+                    value={formValues.address}
+                    onChange={handleFormChange}
+                  />
+                  <i className="fa fa-map-marker icon" aria-hidden="true" />
+                </div>
+              </div>
+            </div>
             <button type="submit" className="checkout">
               Checkout
             </button>
           </form>
         </div>
+
 
 
         <div className="footer">
@@ -224,6 +349,11 @@ export default function Cart () {
                   </div>
               </div>
       </div>
+      {showAlert && (
+      <div className="alert" style={{ position: 'fixed', top: '10px', right: '10px', background: 'green', color: 'white', padding: '10px', borderRadius: '5px' }}>
+        {alertMessage}
+      </div>
+    )}
     </React.Fragment>
   );
 };

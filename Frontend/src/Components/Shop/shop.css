@@ -3,10 +3,14 @@
     background-image: url("./07.png");
     background-position: right;
 }
+.shopp h1{
+    margin-top: 100px;
+    text-align: center;
+    font-size: 50px;
+}
 
 .product-shop{
     display: flex;
-    margin-top: 100px;
  }
  
  .product-list {

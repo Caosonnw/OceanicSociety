@@ -27,7 +27,7 @@ class CartController {
             const roundedShipping = shipping.toFixed(2);
             const roundedTotal = total.toFixed(2);
 
-            res.render('Cart/cart', {
+            res.json({
                 cartItems: formattedCartItems,
                 subtotal: roundedSubtotal,
                 tax: roundedTax,
@@ -87,7 +87,11 @@ class CartController {
     async removeFromCart(req, res, next) {
         try {
             const cartItemId = req.params.cartItemId;
-            await Cart.findByIdAndRemove(cartItemId);
+            await Cart.findByIdAndDelete(cartItemId);
+            
+            if (!Cart) {
+                return res.status(404).json({ error: 'Cart item not found' });
+            }
             res.redirect('/cart');
         } catch (error) {
             next(error);

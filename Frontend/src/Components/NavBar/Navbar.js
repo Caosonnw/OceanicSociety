@@ -68,7 +68,7 @@ export default function Navbar() {
                                 <li>
                                     <Link to="#">BLOG</Link>
                                 </li>
-                                <li>
+                                <li>                      
                                 <Link to="/">
                                     {user ? (
                                     <>
@@ -76,7 +76,7 @@ export default function Navbar() {
                                     Hi, <span> {user.username}</span></p>
                                     <div className="dropdown" style={{ position: 'absolute', top: '121px', left: '100' ,backgroundColor: 'white', borderRadius: '10px', width: '10%'}}>
                                         <Link to="#" style={{marginTop: '10px'}} >Profile</Link>
-                                        <Link to="/cart">Cart</Link>
+                                        <Link to="/cart">Cart <i class="fa-solid fa-cart-shopping"></i></Link>
                                         {user.admin === true &&
                                         <>
                                         <Link to="/manager">Manager</Link>

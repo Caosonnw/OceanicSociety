@@ -21,33 +21,33 @@ class SiteContronller {
     }
 
     //[GET] /category/:categoryName
-    // async categoryProducts(req, res, next) {
-    //     try {
-    //         const category = req.params.category.toLowerCase();
+    async categoryProducts(req, res, next) {
+        try {
+            const category = req.params.category.toLowerCase();
             
-    //         const query = {
-    //             $or: [
-    //                 { name: { $regex: category, $options: 'i' } },
-    //             ]
-    //         };
+            const query = {
+                $or: [
+                    { name: { $regex: category, $options: 'i' } },
+                ]
+            };
             
-    //         const products = await Product.find(query);
-    //         res.render('category', { products });
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // }
+            const products = await Product.find(query);
+            res.render('category', { products });
+        } catch (error) {
+            next(error);
+        }
+    }
 
     // [GET] /search
-    // async search(req, res, next) {
-    //     try {
-    //         const searchTerm = req.query.query;
-    //         const products = await Product.find({ $text: { $search: searchTerm } });
-    //         res.render('search-results', { products });
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // }
+    async search(req, res, next) {
+        try {
+            const searchTerm = req.query.query;
+            const products = await Product.find({ $text: { $search: searchTerm } });
+            res.render('search-results', { products });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new SiteContronller();

@@ -7,6 +7,8 @@ import "./shop.css";
 export default function Shop() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
     useEffect(() => {
         axios.get('/shop/getproduct')
@@ -22,22 +24,49 @@ export default function Shop() {
       try {
         await axios.post(`/cart/add/${productId}`);
   
-        // Chuyển hướng đến trang giỏ hàng
         navigate('/cart');
       } catch (error) {
         console.error('Failed to add to cart', error);
       }
     };
 
+    const handleSearch = () => {
+      if (searchTerm.trim() !== '') {
+        const newFilteredProducts = products.filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredProducts(newFilteredProducts);
+      } else {
+        setFilteredProducts([]); // Reset to empty array when the search term is empty
+      }
+    };
+  
+    // Render the products based on whether there is a search term or not
+    const productsToRender = searchTerm ? filteredProducts : products;
+
   return (
     <React.Fragment>
       <div className='shopp'>
+        <h1>SHOP</h1>
         <div>     
-          <div className="product-shop">
+          <div className="product-shop">  
+              <div className="search-box-s" style={{marginLeft: 30}}>
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Tìm kiếm sản phẩm..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  style={{width: '70%', height: 40}}
+                />
+                <button className='btn-s' style={{backgroundColor: '#8dd7ff', border: 'none', borderRadius: '5px', fontSize: '17px', marginLeft: 50, marginTop: 10}} onClick={handleSearch}>Tìm kiếm</button>
+              </div>         
+
+
           <div className="product-list">
             </div>
             <div className="product-box">
-            {products.map((product) => (
+            {productsToRender.map((product) => (
                 <div key={product._id} className="product-card">
                   <div className="product-image">
                     <img src={product.image} alt="" />
