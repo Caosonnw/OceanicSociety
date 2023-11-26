@@ -12,6 +12,7 @@ import Edit from "./Components/EditProduct/edit";
 import Cart from "./Components/Cart/cart";
 import About from "./Components/About/about";
 import News from "./Components/News/news";
+// import Blog from "./Components/Blog/blog";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/product/:id/edit" element={<Edit />} />
           <Route path="/getallusers" element={<GetAllUsers />} />
           <Route path="/about" element={<About />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
           <Route path="/news" element={<News />} />
           <Route path="/manager" element={<AdminManager />} />
         </Routes>

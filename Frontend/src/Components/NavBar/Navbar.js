@@ -66,7 +66,7 @@ export default function Navbar() {
                                     <Link to="#">TAKE A TRIP</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">BLOG</Link>
+                                    <Link to="/blog">BLOG</Link>
                                 </li>
                                 <li>                      
                                 <Link to="/">

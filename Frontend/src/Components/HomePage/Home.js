@@ -108,7 +108,7 @@ export default function Home() {
                     <div className='content-cnt'>
                         <h2>Join our community.</h2>
                         <p>Email address</p><p style={{color: 'red'}}>*</p>
-                        <input type="email" placeholder="    Join our online community...." value={email} onChange={handleEmailChange}/>
+                        <input type="email" placeholder="Join our online community...." value={email} onChange={handleEmailChange}/>
                         <Link to="#">
                             <button onClick={handleContactSubmit}>Sign up</button>
                         </Link>

@@ -37,11 +37,10 @@ export default function Shop() {
         );
         setFilteredProducts(newFilteredProducts);
       } else {
-        setFilteredProducts([]); // Reset to empty array when the search term is empty
+        setFilteredProducts([]);
       }
     };
-  
-    // Render the products based on whether there is a search term or not
+
     const productsToRender = searchTerm ? filteredProducts : products;
 
   return (

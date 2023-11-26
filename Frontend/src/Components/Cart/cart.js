@@ -89,11 +89,11 @@ export default function Cart () {
         emailAddress: '',
         address: '',
       });
-      setAlertMessage('Form submitted successfully!');
+      setAlertMessage('Order successfully!');
       setShowAlert(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setAlertMessage('Failed to submit form. Please try again.');
+      console.error('Error Order:', error);
+      setAlertMessage('Failed to Order. Please try again.');
       setShowAlert(true);
     }
   };

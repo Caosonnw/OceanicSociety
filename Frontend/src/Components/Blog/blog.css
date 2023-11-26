@@ -1,0 +1,110 @@
+
+#hv2{
+    margin-left: 250px;
+    margin-right: 250px;
+}
+#hv2 p{
+    font-size: 20px;
+}
+#hv{
+    padding-left: 150px;
+    padding-top: 40px;
+}
+.hv1{
+    height: 50px;
+    width: 200px;
+    border-radius: 50px;
+    background-color:#FEDB3D;
+}
+.hv1 a{
+    text-align: center;
+    font-size: 16px;
+}
+#vlt-3{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#vlt-3 h1{
+    text-align: center;
+}
+.vlt-1{
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    height: 320px;
+}
+.vlt-1:hover{
+    border: 2px solid #777;
+    border-radius: 15px;
+}
+.vlt-1 img{
+    height: 250px;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.desc{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+*{
+    box-sizing: border-box;
+}
+.vlt-trips{
+    padding: 0 6px;
+    float: left;
+    width: 350px;
+    height: 350px;
+}
+.clearfix::after{
+    content: ""; 
+    display: table ;
+    clear: both;
+}
+
+.vlt-trip2 a:link, a:visited{
+    background-color: #f44336;
+     color: white;
+     padding: 14px 25px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+.vlt-trip2 a:hover, a:active{
+    background-color: #0091ff;
+}
+
+.title-vlt h1{
+    margin-top: 40px;
+    padding-bottom: 25px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+}
+#hv3{
+    margin-left: 250px;
+    margin-right: 250px;
+    padding-bottom: 100px;
+}
+#hv3 h1{
+    text-align: center;
+    text-align: left;
+    font-size: 38px;
+}
+#hv3 p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+.title-vlt p{
+    margin: 0 100px 0 100px;
+}
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-block-end: 0px;
+
+}
